@@ -5,8 +5,8 @@ docker image of hackchat
 How to use?
 
 ```shell
-docker push yuworm/hackchat:tagname 
-docker run --name hackchat -d --restart=unless-stoped -p 3000:3000 -p 6060:6060 yuworm/hackchat:tagname
+docker push yuworm/hackchat:latest 
+docker run --name hackchat -d --restart=unless-stoped -p 3000:3000 -p 6060:6060 yuworm/hackchat:latest
 ```
 
 Export ports:
