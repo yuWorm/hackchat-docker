@@ -15,11 +15,13 @@
   "scripts": {
     "start": "pm2 startOrReload pm2.config.cjs",
     "stop": "pm2 stop pm2.config.cjs && pm2 delete pm2.config.cjs",
+    "start_wait": "pm2-runtime pm2.config.cjs",
     "logs": "pm2 logs",
     "clear": "pm2 flush",
     "status": "pm2 list",
     "refresh": "pm2 flush && pm2 stop pm2.config.cjs && pm2 delete pm2.config.cjs",
     "config": "node ./scripts/config.js",
+    "env_config": "node ./scripts/env_config.js",
     "lint": "eslint -- . ",
     "lint:fix": "eslint --fix -- . ",
     "test_run": "cls && npm run refresh && npm start && npm run logs && npm run stop",

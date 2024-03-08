@@ -1,20 +1,15 @@
-FROM node:hydrogen-alpine3.19
+FROM node
 
 WORKDIR /app
 
-COPY main /app
+COPY . /app
 
-COPY hackchat_patch/client.js  /app/client/client.js
+RUN cp /app/hackchat_patch/client.js /app/main/client/ \
+    && cp /app/hackchat_patch/index.html /app/main/client/ \
+    && cp /app/hackchat_patch/env_config.js /app/main/scripts/ \
+    && cp /app/hackchat_patch/package.json /app/main/ \
+    && cd /app/main && npm -g install pnpm && pnpm install
 
-COPY hackchat_patch/env_config.js  /app/scripts/env_config.js
-
-COPY hackchat_patch/package.json  /app/package.json
-
-COPY hackchat_patch/index.html  /app/client/index.html
-
-COPY run.sh /app
-
-RUN npm -g install pnpm && pnpm install && chmod +x /app/run.sh
 
 EXPOSE 6060 3000
 
